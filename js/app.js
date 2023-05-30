@@ -108,42 +108,69 @@ const newObject = array => ({
 
 
 
-let sum = function(a, b, c, d) {
-  return a + b + c + d;
-};
+// let sum = function(a, b, c, d) {
+//   return a + b + c + d;
+// };
+
+
+
+//Question 10a Refactor Answer:
+let sum = (a, b, c, d) => a + b + c + d;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(sum(1, 2, 3, 4));
+//console.log(sum(1, 2, 3, 4));
 
 
-let objectLit = function() {
-  return {
+// let objectLit = function() {
+//   return {
+//     key1: 'value1',
+//     key2: 'value2',
+//     key3: 'value3',
+//   };
+// };
+
+// Question 10b Refactor Answer:
+let objectLit = () => (
+  {
     key1: 'value1',
     key2: 'value2',
     key3: 'value3',
-  };
-};
+  }
+);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // console.log(objectLit());
 
 
-let sumAndProduct = function(a, b) {
-  let sum = a + b;
-  let product = a * b;
-  return [sum, product];
-};
+// let sumAndProduct = function(a, b) {
+//   let sum = a + b;
+//   let product = a * b;
+//   return [sum, product];
+// };
+
+//Question 10c Refactor Answer:
+let sumAndProduct = (a, b) => [a + b, a * b];
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // console.log(sumAndProduct(3, 9));
 
 
-let message = function(name) {
-  return `Hello, ${name}!`;
-};
+
+// let message = function(name) {
+//   return `Hello, ${name}!`;
+// };
+
+
+//Question 10d Refactor Answer:
+let message = name => `Hello, ${name}!`
+
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(message('Allie'));
+//console.log(message('Allie'));
+
+
+
+
 
 
 let Student = function(name, age, hometown) {
@@ -154,9 +181,19 @@ let Student = function(name, age, hometown) {
 
 let joe = new Student('Joe', 'Schmoe', 100);
 
+//Question 10e Refactor Answer:
+// let Student = (name, age, hometown) => ({
+//   name,
+//   age,
+//   hometown,
+// });
+
+// let joe = new Student('Joe', 'Schmoe', 100);
+
+
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this code to break!
-// console.log(joe);
+//console.log(joe);
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
@@ -166,17 +203,23 @@ Student.prototype.greeting = function() {
   return `Hi, my name is ${this.name}`;
 };
 
+//Question 10f Refactor Answer:
+// Student.prototype.greeting = () => `Hi, my name is ${this.name}`;
+
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
-// console.log(joe.greeting());
+//console.log(joe.greeting());
+
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
+// Student.courseName = function() {
+//   return 'This student is enrolled in Code 301.';
+// };
 
+//Question 10g Refactor Answer:
+Student.courseName = () => 'This student is enrolled in Code 301.';
 
-Student.courseName = function() {
-  return 'This student is enrolled in Code 301.';
-};
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // console.log(Student.courseName());
@@ -189,18 +232,19 @@ Student.prototype.scope = function() {
   console.log(this);
 };
 
+
 // TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scope();
+joe.scope();
 
 Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scopeArrow();
+joe.scopeArrow();
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-//
+//When the joe.scope() is invoked, the "this" within the scope function will refer to the joe object.
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+//When the joe.scopeArrow() is invoked the "this" in the scopeArrow function refers to the global/"winder" "this" value.
 // 3. Explain why "this" is different when an arrow function is used.
-//
+// As mentioned in the readings, arrow functions don't have their own binding to this value. Thus, in this case, "this" is not referrinf to the 'Student' object but instead the global object.
